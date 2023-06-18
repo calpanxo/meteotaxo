@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 });
 
 // Ruta para recibir los datos de temperatura y humedad desde el Wemos D1 Mini
-app.post('/datos', (req, res) => {
+app.post('api/datos', (req, res) => {
   const { temperatura, humedad } = req.body;
 
   // Guardar los datos en la base de datos
@@ -30,7 +30,7 @@ app.post('/datos', (req, res) => {
 });
 
 // Definir el endpoint para obtener los datos de la tabla "prova"
-app.get('/api/prova', (req, res) => {
+app.get('api/prova', (req, res) => {
     // Realizar la consulta a la base de datos
     connection.query('SELECT * FROM prova', (error, results) => {
       if (error) {
