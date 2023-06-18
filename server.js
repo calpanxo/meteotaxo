@@ -29,6 +29,21 @@ app.post('/datos', (req, res) => {
   });
 });
 
+// Definir el endpoint para obtener los datos de la tabla "prova"
+app.get('/api/prova', (req, res) => {
+    // Realizar la consulta a la base de datos
+    connection.query('SELECT * FROM prova', (error, results) => {
+      if (error) {
+        console.error('Error al consultar la base de datos:', error);
+        res.status(500).json({ error: 'Error al consultar la base de datos' });
+      } else {
+        // Enviar los resultados como respuesta
+        res.json(results);
+      }
+    });
+  });
+  
+
 // Iniciar el servidor
 app.listen(3000, () => {
   console.log('API escuchando en el puerto 3000');
